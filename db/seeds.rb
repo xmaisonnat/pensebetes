@@ -7,22 +7,26 @@
 
 #   Character.create(name: 'Luke', movie: movies.first)
 require 'faker'
+puts "cleaning DB"
 
-10.times do
-users = User.new(
+Animal.destroy.all
+
+
+
+USERS = User.new(
   name: Faker::Name.unique.name,
-  address: Faker::Address.unique.full_address,
-  email: Faker::Internet.unique.email,
-  phone_number: Faker::.unique.cell_phone
+  address: Faker::Address.full_address,
+  email: Faker::Internet.email,
+  phone_number: Faker::PhoneNumber.cell_phone
   )
-users.save
-end
+USERS.save!
 
 10.times do
 animals = Animal.new(
   name: Faker::Creature::Cat.unique.name,
-  description:"Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb."
-  race: Faker::Creature::Animal.unique.name
+  description:"Do you see any Teletubbies in here? Do you see a slender plastic tag clipped to my shirt with my name printed on it? Do you see a little Asian child with a blank expression on his face sitting outside on a mechanical helicopter that shakes when you put quarters in it? No? Well, that's what you see at a toy store. And you must think you're in a toy store, because you're here shopping for an infant named Jeb.",
+  race: Faker::Creature::Animal.unique.name,
+  user_id: USERS
   )
-animals.save
+animals.save!
 end
