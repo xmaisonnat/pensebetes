@@ -1,0 +1,22 @@
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1517795152135-b5d52bfee71c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60);">
+  <div class="container">
+    <h1>Reservations</h1>
+  </div>
+</div>
+
+
+<div class="container">
+  <div class="card-product">
+    <% @reservations.each do |reservation| %>
+    <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path animal.photo, height: 300, width: 400, crop: :fill %>')">
+        <%= link_to animal.name, animal %>
+      <div class="card-product-infos">
+        <h2><%= animal.name %></h2>
+        <ul>
+          <li> <% link_to "Conseils d'entretien de l'animal", show_animal_path, class: "btn btn-flat"  %></li>
+         </ul>
+      </div>
+
+    <% end %>
+  </div>
