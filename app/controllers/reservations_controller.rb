@@ -1,8 +1,8 @@
 class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
-
+  befire_action :set_reservation, only: [:accept, :decline, :destroy]
   def index
-    @reservations = Reservation.all
+    @reservations = policy_scope(Reservation).order(created_at: :desc)
   end
 
   def accept?
@@ -17,7 +17,10 @@ class ReservationsController < ApplicationController
     record.user
   end
 
+  private
 
-
-
+  def set_reservation
+    @reservation = Reservation.find(params[:id])
+    authorize @reservation
+  end
 end
