@@ -17,7 +17,11 @@ USERS = User.new(
   name: Faker::Name.unique.name,
   address: Faker::Address.full_address,
   email: Faker::Internet.email,
+
+  password: "password",
+
   password: "password"
+
   phone_number: Faker::PhoneNumber.cell_phone
   )
 USERS.save!
