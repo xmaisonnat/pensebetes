@@ -5,6 +5,7 @@ class ReservationsController < ApplicationController
     @reservations = Reservation.all
   end
 
+<<<<<<< HEAD
   def accept?
     authorize @reservation
   end
@@ -12,6 +13,11 @@ class ReservationsController < ApplicationController
   def decline?
     authorize @reservation
   end
+=======
+
+
+
+>>>>>>> 71c81fd3216faeedee9cebfca301b90421f62d23
 
 
 end
