@@ -5,6 +5,4 @@ class Animal < ApplicationRecord
   validates :description, presence: true
   validates :race, presence: true
 
-  validates :user, presence: true, uniqueness: true
-
 end
