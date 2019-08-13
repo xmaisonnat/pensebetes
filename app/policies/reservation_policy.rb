@@ -6,11 +6,11 @@ class ReservationPolicy < ApplicationPolicy
   end
 
   def accept?
-    true
+    record.animal.user == user
   end
 
   def decline?
-    true
+    record.animal.user == user
   end
 
   def update?

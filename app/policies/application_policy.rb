@@ -18,14 +18,6 @@ class ApplicationPolicy
     false
   end
 
-  def accept?
-    false
-  end
-
-  def decline?
-    false
-  end
-
   def new?
     create?
   end

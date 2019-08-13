@@ -17,14 +17,15 @@
                         <% link_to "Conseils d'entretien de l'animal", show_animal_path, class: "btn btn-flat"  %>
                     </li>
                     <li>
-                        <% if policy(Reservation).create? %>
+                        <% if policy(reservation).accept? %>
                         <%= link_to "Accepter", accept_reservation_path %>
+                        <% end %>
                     </li>
                     <li>
-                        <% if policy(Reservation).decline? %>
+                        <% if policy(reservation).decline? %>
                         <%= link_to "Refuser", decline_reservation_path %>
+                        <% end %>
                     </li>
-                    <% end %>
                 </ul>
             </div>
             <% end %>
