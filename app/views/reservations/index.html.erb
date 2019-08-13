@@ -14,6 +14,9 @@
       <div class="card-product-infos">
         <h2><%= animal.name %></h2>
         <ul>
+          <li><% if policy(Restaurant).create? %>
+  <%= link_to "Accept Reservation", new_reservation_path %></li>
+<% end %>
           <li> <% link_to "Conseils d'entretien de l'animal", show_animal_path, class: "btn btn-flat"  %></li>
          </ul>
       </div>
