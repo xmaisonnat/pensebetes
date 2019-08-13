@@ -4,7 +4,7 @@ class Animal < ApplicationRecord
   validates :name, presence: true
   validates :description, presence: true
   validates :race, presence: true
+
   validates :user, presence: true, uniqueness: true
-  # mount_uploader :photo, PhotoUploader
 
 end
