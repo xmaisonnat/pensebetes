@@ -14,11 +14,11 @@ class AnimalPolicy < ApplicationPolicy
   end
 
   def create?
-    record.user == user
+    true
   end
 
   def new?
-    create?
+    true
   end
 
   def update?
