@@ -11,5 +11,8 @@ Rails.application.routes.draw do
       patch 'accept'
       patch 'decline'
     end
+    collection do
+      get 'owner_index'
+    end
   end
 end
