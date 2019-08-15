@@ -45,3 +45,16 @@
   font-weight: bold;
   text-align: center;
 }
+.btn-home {
+  width: 150px;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: #293462;
+  transition: background 0.3s ease;
+}
+
+.btn-home:hover {
+  background: #216583;
+  color: white;
+}

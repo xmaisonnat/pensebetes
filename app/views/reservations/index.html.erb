@@ -3,14 +3,30 @@
         <h1>Réservations</h1>
     </div>
 </div>
-<div class="container">
+
+ <% @reservations.each do |reservation| %>
+          <tr>
+            <td><%= @animal_id.name %></td>
+            <td><%= @animal_id.description %></td>
+            <td><%= reservation.user_id %></td>
+            <td><%= link_to 'Destroy', reservation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+
+<% end %>
+
+
+
+
+
+
+
+<!-- <div class="container">
     <div class="card-product">
         <% @reservations.each do |reservation| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path animal.photo, height: 300, width: 400, crop: :fill %>')">
-            <%= link_to animal.name, animal.id %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @animal.photo, height: 300, width: 400, crop: :fill %>')">
             <div class="card-product-infos">
                 <h2>
-                    <%= animal.id.name %>
+                    <%= @animal.name %>
                 </h2>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label>
@@ -33,4 +49,4 @@
                 </ul>
             </div>
             <% end %>
-        </div>
+        </div> -->

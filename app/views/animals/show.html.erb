@@ -41,9 +41,9 @@
         <div class="form-wrapper ">
             <!--  <h4>Dates : </h4> -->
             <h3>Sélectionne moi</h3>
-            <%= simple_form_for :search, method: :get do |t| %>
-            <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
-            <%= t.input :au, as: :string, input_html: {id: "end_date"} %> <br>
+            <%= simple_form_for [@animal, @reservation] do |t| %>
+            <%= t.input :start_date, as: :string, input_html: {id: "start_date"}, label: "Du" %> <br>
+            <%= t.input :end_date, as: :string, input_html: {id: "end_date"}, label: "Au" %> <br>
             <%= t.submit "Retour", class: "btn btn-back" %>
             <%= t.submit "Bêeee", class: "btn btn-rent" %>
             <% end %>

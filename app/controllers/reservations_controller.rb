@@ -2,7 +2,8 @@ class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_reservation, only: [:owner_index, :accept, :decline, :destroy]
   def index
-    @reservations = policy_scope(Reservation).order(created_at: :desc)
+    @reservations = Reservation.where(user: current_user)
+    # @reservations = policy_scope(Reservation).order(created_at: :desc)
   end
 
   def owner_index
@@ -19,13 +20,14 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    # @reservation.animal = animal
-    # @reservation.user = current_user
+    @animal = Animal.find(params[:animal_id])
     @reservation = Reservation.new(reservation_params)
+    @reservation.animal = @animal
+    @reservation.user_id = current_user[:id]
     if @reservation.save
-      redirect_to @reservations, notice: "#{animal.name} a été seléctionné(e)!"
+      redirect_to reservations_path(@reservation), notice: "#{@animal.name} a été seléctionné(e)!"
     else
-      render :new
+      render "animals/show"
     end
   end
 
