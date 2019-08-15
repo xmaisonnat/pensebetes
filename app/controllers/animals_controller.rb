@@ -15,6 +15,14 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
     @reservations = Reservation.new
     authorize @animal
+
+    @localisations = User.geocoded
+    @markers = @localisations.map do |localisation|
+      {
+        lat: localisation.latitude,
+        lng: localisation.longitude
+      }
+    end
   end
 
   def new
@@ -37,5 +45,4 @@ class AnimalsController < ApplicationController
     params.require(:animal).permit(:name, :race, :description, :photo)
   end
 end
-
 
