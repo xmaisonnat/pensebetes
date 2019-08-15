@@ -33,6 +33,8 @@ ActiveRecord::Schema.define(version: 2019_08_15_162604) do
     t.bigint "animal_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "start_date"
+    t.datetime "end_date"
     t.index ["animal_id"], name: "index_reservations_on_animal_id"
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
