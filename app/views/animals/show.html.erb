@@ -24,28 +24,22 @@
         <div class="colums col-6">
             <h1>
                 <%= @animal.name %>
-                </h1>
-                <br>
-                <h5>
+            </h1>
+            <br>
+            <h5>
                 <%= @animal.race %>
-                </h5>
-                <br>
-                <%= @animal.description %>
+            </h5>
+            <br>
+            <%= @animal.description %>
         </div>
         <div>
-          <h3>Adresse :</h3>
-          <div
-            id="map"
-            style="width: 100%;
-            height: 600px;"
-            data-markers="<%= @markers.to_json %>"
-            data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
-          ></div>
+            <h3>Adresse :</h3>
+            <div id="map" style="width: 100%;
+            height: 600px;" data-markers="<%= @markers.to_json %>" data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
         </div>
     </div>
     <br>
-    
-      <div class="container">
+    <div class="container">
         <div class="form-wrapper ">
             <h3>Sélectionne moi</h3>
             <%= simple_form_for [@animal, @reservation] do |t| %>
@@ -54,17 +48,15 @@
             <%= t.submit "Retour", class: "btn btn-back" %>
             <%= t.submit "Bêeee", class: "btn btn-rent" %>
             <% end %>
-          <div class="rows">
-        <div class="d-flex justify-content-between">
-          <% if current_user == @animal.user %>
-              <%= link_to "Supprimer", animal_path(@animal), class: "btn btn-danger mx-3 mb-5 px-5 py-2",
+            <div class="rows">
+                <div class="d-flex justify-content-between">
+                    <% if current_user == @animal.user %>
+                    <%= link_to "Supprimer", animal_path(@animal), class: "btn btn-danger mx-3 mb-5 px-5 py-2",
                                       method: :delete,
                                       data: { confirm: "Voulez-vous vraiment tuer?" } %>
-          <% end %>
-          <% end %>
+                    <% end %>
+                </div>
+            </div>
         </div>
     </div>
-
-</div>
-</div>
 </div>
