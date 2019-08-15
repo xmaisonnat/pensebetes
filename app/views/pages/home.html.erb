@@ -16,7 +16,7 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Trouver un animal"%>
+          placeholder: "Entrez le nom de l'animal"%>
       <!--  <% end %> <br> -->
       <%= simple_form_for :search, method: :get do |t| %>
         <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
