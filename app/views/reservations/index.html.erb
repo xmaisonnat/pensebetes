@@ -6,11 +6,10 @@
 <div class="container">
     <div class="card-product">
         <% @reservations.each do |reservation| %>
-        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path animal.photo, height: 300, width: 400, crop: :fill %>')">
-            <%= link_to animal.name, animal.id %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @animal.photo, height: 300, width: 400, crop: :fill %>')">
             <div class="card-product-infos">
                 <h2>
-                    <%= animal.id.name %>
+                    <%= @animal.name %>
                 </h2>
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label>
@@ -34,3 +33,5 @@
             </div>
             <% end %>
         </div>
+    </div>
+</div>

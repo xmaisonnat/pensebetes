@@ -20,4 +20,8 @@ class ReservationPolicy < ApplicationPolicy
   def destroy?
     record.user == user
   end
+
+  def create?
+    record.user == user
+  end
 end

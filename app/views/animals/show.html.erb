@@ -1,5 +1,4 @@
 <div class="container">
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -20,7 +19,6 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-
     </div>
     <div class="description rows d-flex mt-4">
         <div class="colums col-6">
@@ -46,11 +44,18 @@
         </div>
     </div>
     <br>
-    <div class="rows">
+    
+      <div class="container">
+        <div class="form-wrapper ">
+            <h3>Sélectionne moi</h3>
+            <%= simple_form_for [@animal, @reservation] do |t| %>
+            <%= t.input :start_date, as: :string, input_html: {id: "start_date"}, label: "Du" %> <br>
+            <%= t.input :end_date, as: :string, input_html: {id: "end_date"}, label: "Au" %> <br>
+            <%= t.submit "Retour", class: "btn btn-back" %>
+            <%= t.submit "Bêeee", class: "btn btn-rent" %>
+            <% end %>
+          <div class="rows">
         <div class="d-flex justify-content-between">
-          <%= simple_form_for(@reservations) do |f| %>
-            <%= link_to 'back', animals_path, class: "btn btn-primary mx-3 mb-5 py-2" %>
-          <%= link_to 'rent', reservations_path, method: :create, class: "btn btn-success mx-3 mb-5 px-5 py-2" %>
           <% if current_user == @animal.user %>
               <%= link_to "Supprimer", animal_path(@animal), class: "btn btn-danger mx-3 mb-5 px-5 py-2",
                                       method: :delete,
@@ -59,4 +64,7 @@
           <% end %>
         </div>
     </div>
+
+</div>
+</div>
 </div>
