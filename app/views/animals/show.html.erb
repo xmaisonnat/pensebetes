@@ -33,7 +33,7 @@
                 <%= @animal.description %>
         </div>
         <div>
-          <h3>Geocoding</h3>
+          <h3>Adresse :</h3>
           <div
             id="map"
             style="width: 100%;
@@ -41,13 +41,12 @@
             data-markers="<%= @markers.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
           ></div>
-            <!-- <img src="https://www.google.com/maps/vt/data=iLUTdmnVGS3wwR-86uNffTTtfDTfBjfawaFu2PC-AmYcKW0owfivq8qOfkemEZzUf0lJL58PJQQqr56DPon_P_3d4oE6jJ3eYD4F5Fjr3_G76aROPsKttBTNN5FUdUBmX-Ej72ofyPvjvX7mqVAlhGikX-ElD1g6jGAdkdsiTglC5KgiMhIUyURpnLuJPXAOfPik_JmEuJ7rda-yd_QQejkTXRtNSw" alt=""> -->
         </div>
     </div>
     <br>
-    <div class="container">
+    
+      <div class="container">
         <div class="form-wrapper ">
-            <!--  <h4>Dates : </h4> -->
             <h3>Sélectionne moi</h3>
             <%= simple_form_for [@animal, @reservation] do |t| %>
             <%= t.input :start_date, as: :string, input_html: {id: "start_date"}, label: "Du" %> <br>
@@ -55,10 +54,17 @@
             <%= t.submit "Retour", class: "btn btn-back" %>
             <%= t.submit "Bêeee", class: "btn btn-rent" %>
             <% end %>
+          <div class="rows">
+        <div class="d-flex justify-content-between">
+          <% if current_user == @animal.user %>
+              <%= link_to "Supprimer", animal_path(@animal), class: "btn btn-danger mx-3 mb-5 px-5 py-2",
+                                      method: :delete,
+                                      data: { confirm: "Voulez-vous vraiment tuer?" } %>
+          <% end %>
+          <% end %>
         </div>
     </div>
 
-</div>
 </div>
 </div>
 </div>

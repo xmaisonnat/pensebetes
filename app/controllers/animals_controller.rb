@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :delete]
 
   def index
     @animals = policy_scope(Animal).order(created_at: :desc)
@@ -15,6 +15,14 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
     @reservation = Reservation.new
     authorize @animal
+
+    @localisations = User.geocoded
+    @markers = @localisations.map do |localisation|
+      {
+        lat: localisation.latitude,
+        lng: localisation.longitude
+      }
+    end
   end
 
   def new
@@ -29,6 +37,14 @@ class AnimalsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @current_user = Animal.where(user: current_user)
+    @animal = Animal.find(params[:id])
+    @animal.destroy
+    redirect_to animals_path
+    authorize @animal
   end
 
   private
