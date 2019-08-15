@@ -8,12 +8,22 @@
 <br>
 
 <div class="container">
+  <div class="form-inline " >
+       <!--  <h4>Dates : </h4> -->
+        <%= form_tag animals_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control text-center",
+            placeholder: "Entrez le nom de l'animal"%>
+            <%= submit_tag "Voir la liste", class: "btn btn-home" %>
+        <% end %>
+      </div><br><br>
   <div class="cards">
     <% @animals.each do |animal| %>
 
      <div class="card-category"
          style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path animal.photo%>')">
+         url('<%= cl_image_path animal.photo, height: 300, width: 400,  gravity: :face %>')">
         <h3> <%= link_to animal.race, animal_path(animal) %> </h3>
       </div>
     <% end %>

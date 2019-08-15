@@ -3,7 +3,12 @@ class AnimalsController < ApplicationController
 
   def index
     @animals = policy_scope(Animal).order(created_at: :desc)
-
+    if params[:query].present?
+      sql_query = "race ILIKE :query OR description ILIKE :query"
+      @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
+    else
+      @animals = Animal.all
+    end
   end
 
   def show

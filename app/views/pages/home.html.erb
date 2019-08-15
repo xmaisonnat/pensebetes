@@ -6,31 +6,22 @@
     Un mouton pour tondre votre gazon ? Un cheval pour se balader ? Un canard pour faire du foie gras ? </p> <br>
     <br>
   </div>
-    <!-- <form action="#" class="form-inline">
-      <input type="date" class="form-control input-lg" placeholder="checkin">
-      <input type="date" class="form-control input-lg" placeholder="checkout">
-      <select name="" id="" class="form-control input-lg">
-        <option value="1">mouton</option>
-        <option value="2">chèvre</option>
-        <option value="3">cheval</option>
-        <option value="4">agneau</option>
-        <option value="5">canard</option>
-        <option value="6">vache</option>
-      </select>
-      <%= link_to "Voir la liste", animals_path, class: "btn btn-home" %>
-    </form>
-  </div>
-</div>
- -->
+
  <br><br>
- <div class="container">
+
+<div class="container">
    <div class="form-wrapper " >
-   <!--  <h4>Dates : </h4> -->
-     <%= simple_form_for :search, method: :get do |t| %>
-      <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
-      <%= t.input :au, as: :string, input_html: {id: "end_date"} %> <br>
-     <!--  <%= t.submit "Go", class: "btn btn-home" %> -->
-      <%= link_to "Voir la liste", animals_path, class: "btn btn-home" %>
+     <!--  <h4>Dates : </h4> -->
+      <%= form_tag animals_path, method: :get do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-control",
+          placeholder: "Entrez le nom de l'animal"%>
+      <!--  <% end %> <br> -->
+      <%= simple_form_for :search, method: :get do |t| %>
+        <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
+        <%= t.input :au, as: :string, input_html: {id: "end_date"} %> <br>
+        <%= submit_tag "Voir la liste", class: "btn btn-home" %>
       <% end %>
    </div>
  </div>
