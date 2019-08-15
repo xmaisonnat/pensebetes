@@ -3,11 +3,35 @@
         <h1>Réservations</h1>
     </div>
 </div>
-
- <% @reservations.each do |reservation| %>
-          <tr>
-            <td><%= @animal %></td>
-            <td><%= @reservation %></td>
-            <td><%= reservation.user_id %></td>
-
-<% end %>
+<div class="container">
+    <div class="card-product">
+        <% @reservations.each do |reservation| %>
+        <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @animal.photo, height: 300, width: 400, crop: :fill %>')">
+            <div class="card-product-infos">
+                <h2>
+                    <%= @animal.name %>
+                </h2>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                </div>
+                <ul>
+                    <li>
+                        <% link_to "Conseils d'entretien de l'animal", show_animal_path, class: "btn btn-flat"  %>
+                    </li>
+                    <li>
+                        <% if policy(reservation).accept? %>
+                        <%= link_to "Accepter", accept_reservation_path %>
+                        <% end %>
+                    </li>
+                    <li>
+                        <% if policy(reservation).decline? %>
+                        <%= link_to "Refuser", decline_reservation_path %>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+            <% end %>
+        </div>
+    </div>
+</div>
