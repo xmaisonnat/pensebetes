@@ -10,7 +10,10 @@
 <div class="container">
   <div class="cards">
     <% @animals.each do |animal| %>
-      <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://images.unsplash.com/photo-1462218503178-e822ff881c43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80)"> <br>
+
+     <div class="card-category"
+         style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path animal.photo%>')">
         <h3> <%= link_to animal.race, animal_path(animal) %> </h3>
       </div>
     <% end %>
