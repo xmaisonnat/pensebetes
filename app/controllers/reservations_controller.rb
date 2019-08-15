@@ -19,11 +19,11 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @reservation = Reservation.new(reservation_params)
     @reservation.animal = animal
     @reservation.user = user
+    @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to @reservation, notice: 'The reservation was successfully selected.'
+      redirect_to @reservations, notice: 'The reservation was successfully selected.'
     else
       render :new
     end
