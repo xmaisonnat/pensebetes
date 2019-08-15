@@ -1,21 +1,38 @@
 <div class="home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1484557985045-edf25e08da73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80);">
   <div class="container">
     <h1>Pense Bêtes</h1>
-    <h2>Un pense-bête pas si bête ! </h2><br>
-    <p><strong>Mettez à dispotion</strong> ou <strong>empruntez un animal</strong> pour effectuer des tâches ou activités à <strong> moindre coup </strong>tout en étant <strong>écolo </strong>! <br>
+    <h2>Un pense-bête pas si bête ! </h2><br><br><br>
+    <p><strong>Mettez à dispotion</strong> ou <strong>empruntez un animal</strong> pour effectuer des tâches ou activités à <strong> moindre coût </strong>tout en étant <strong>écolo </strong>! <br>
     Un mouton pour tondre votre gazon ? Un cheval pour se balader ? Un canard pour faire du foie gras ? </p> <br>
     <br>
-    <form action="#" class="form-inline">
+  </div>
+    <!-- <form action="#" class="form-inline">
       <input type="date" class="form-control input-lg" placeholder="checkin">
       <input type="date" class="form-control input-lg" placeholder="checkout">
       <select name="" id="" class="form-control input-lg">
-        <option value="1">1 mouton</option>
-        <option value="2">1 cheval</option>
-        <option value="3">1 canard</option>
+        <option value="1">mouton</option>
+        <option value="2">chèvre</option>
+        <option value="3">cheval</option>
+        <option value="4">agneau</option>
+        <option value="5">canard</option>
+        <option value="6">vache</option>
       </select>
-      <%= link_to 'submit', animals_path, class: "btn btn-home" %>
+      <%= link_to "Voir la liste", animals_path, class: "btn btn-home" %>
     </form>
   </div>
 </div>
-
+ -->
+ <br><br>
+ <div class="container">
+   <div class="form-wrapper " >
+   <!--  <h4>Dates : </h4> -->
+     <%= simple_form_for :search, method: :get do |t| %>
+      <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
+      <%= t.input :au, as: :string, input_html: {id: "end_date"} %> <br>
+     <!--  <%= t.submit "Go", class: "btn btn-home" %> -->
+      <%= link_to "Voir la liste", animals_path, class: "btn btn-home" %>
+      <% end %>
+   </div>
+ </div>
+ <br><br>
 
