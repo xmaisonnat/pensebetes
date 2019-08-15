@@ -15,6 +15,14 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
     @reservations = Reservation.new
     authorize @animal
+
+    @localisations = User.geocoded
+    @markers = @localisations.map do |localisation|
+      {
+        lat: localisation.latitude,
+        lng: localisation.longitude
+      }
+    end
   end
 
   def new
