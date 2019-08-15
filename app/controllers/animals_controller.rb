@@ -8,6 +8,7 @@ class AnimalsController < ApplicationController
 
   def show
     @animal = Animal.find(params[:id])
+    @reservations = Reservation.new
     authorize @animal
   end
 
