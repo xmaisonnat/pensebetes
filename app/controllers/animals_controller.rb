@@ -1,5 +1,5 @@
 class AnimalsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :delete]
 
   def index
     @animals = policy_scope(Animal).order(created_at: :desc)
@@ -39,10 +39,17 @@ class AnimalsController < ApplicationController
     end
   end
 
+  def destroy
+    @current_user = Animal.where(user: current_user)
+    @animal = Animal.find(params[:id])
+    @animal.destroy
+    redirect_to animals_path
+    authorize @animal
+  end
+
   private
 
   def animal_params
     params.require(:animal).permit(:name, :race, :description, :photo)
   end
 end
-
