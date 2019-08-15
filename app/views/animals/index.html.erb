@@ -8,6 +8,16 @@
 <br>
 
 <div class="container">
+  <div class="form-inline " >
+       <!--  <h4>Dates : </h4> -->
+        <%= form_tag animals_path, method: :get do %>
+          <%= text_field_tag :query,
+            params[:query],
+            class: "form-control text-center",
+            placeholder: "Entrez le nom de l'animal"%>
+            <%= submit_tag "Voir la liste", class: "btn btn-home" %>
+        <% end %>
+      </div><br><br>
   <div class="cards">
     <% @animals.each do |animal| %>
 
