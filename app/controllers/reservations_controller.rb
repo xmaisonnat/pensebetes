@@ -24,6 +24,7 @@ class ReservationsController < ApplicationController
     @reservation = Reservation.new(reservation_params)
     @reservation.animal = @animal
     @reservation.user_id = current_user[:id]
+    authorize @reservation
     if @reservation.save
       redirect_to reservations_path(@reservation), notice: "#{@animal.name} a été seléctionné(e)!"
     else
