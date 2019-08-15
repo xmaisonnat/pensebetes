@@ -3,6 +3,7 @@ class AnimalsController < ApplicationController
 
   def index
     @animals = policy_scope(Animal).order(created_at: :desc)
+
   end
 
   def show
@@ -28,6 +29,6 @@ class AnimalsController < ApplicationController
   private
 
   def animal_params
-    params.require(:animal).permit(:name, :race, :description)
+    params.require(:animal).permit(:name, :race, :description, :photo)
   end
 end
