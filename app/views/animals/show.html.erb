@@ -1,5 +1,4 @@
 <div class="container">
-
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
             <div class="carousel-item active">
@@ -20,32 +19,38 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
-
     </div>
     <div class="description rows d-flex mt-4">
         <div class="colums col-6">
             <h1>
                 <%= @animal.name %>
-                </h1>
-                <br>
-                <h5>
-                    <%= @animal.race %>
-                </h5>
-                <br>
-                <%= @animal.description %>
+            </h1>
+            <br>
+            <h5>
+                <%= @animal.race %>
+            </h5>
+            <br>
+            <%= @animal.description %>
         </div>
         <div>
             <img src="https://www.google.com/maps/vt/data=iLUTdmnVGS3wwR-86uNffTTtfDTfBjfawaFu2PC-AmYcKW0owfivq8qOfkemEZzUf0lJL58PJQQqr56DPon_P_3d4oE6jJ3eYD4F5Fjr3_G76aROPsKttBTNN5FUdUBmX-Ej72ofyPvjvX7mqVAlhGikX-ElD1g6jGAdkdsiTglC5KgiMhIUyURpnLuJPXAOfPik_JmEuJ7rda-yd_QQejkTXRtNSw" alt="">
         </div>
     </div>
     <br>
-    <div class="rows">
-        <div class="d-flex justify-content-between">
-          <%= simple_form_for(@reservations) do |f| %>
-            <%= link_to 'back', animals_path, class: "btn btn-primary mx-3 mb-5 py-2" %>
-          <%= link_to 'rent', reservations_path, method: :create, class: "btn btn-success mb-5 px-5 py-2" %>
+    <div class="container">
+        <div class="form-wrapper ">
+            <!--  <h4>Dates : </h4> -->
+            <h3>Sélectionne moi</h3>
+            <%= simple_form_for :search, method: :get do |t| %>
+            <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
+            <%= t.input :au, as: :string, input_html: {id: "end_date"} %> <br>
+            <%= t.submit "Retour", class: "btn btn-back" %>
+            <%= t.submit "Bêeee", class: "btn btn-rent" %>
             <% end %>
         </div>
     </div>
+
+</div>
+</div>
 </div>
 </div>

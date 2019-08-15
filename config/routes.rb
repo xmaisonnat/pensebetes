@@ -5,7 +5,9 @@ Rails.application.routes.draw do
   resources :reservations, only: :index
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
-  resources :animals, only: [:index, :show, :new, :create]
+  resources :animals, only: [:index, :show, :new, :create] do
+    resources :reservations, only: [:create]
+  end
   resources :reservations do
     member do
       patch 'accept'
