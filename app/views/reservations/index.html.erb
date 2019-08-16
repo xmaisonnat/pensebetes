@@ -5,30 +5,28 @@
 </div>
 <br>
 <div class="container">
-  <div class="cards">
+  <div class="form-group">
     <% @reservations.each do |reservation| %>
-      <div class="card-category"
-         style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.1)),
-         url('<%= cl_image_path reservation.animal.photo, height: 300, width: 400,  gravity: :face %>')">
-        <h2> <%= reservation.animal.name %> </h2>
-  </div>
-      <div class="form-group">
-        <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+
+    <div class="">
+      <div class="card-category2"
+         style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path reservation.animal.photo%>')"/>
+         <h2 class="text-center"> <%= reservation.animal.name %> </h2>
       </div>
-      <div class="form-inline">
-        <% link_to "Conseils d'entretien de l'animal", animal_path(reservation.animal_id, reservation), class: "btn btn-back col-2"  %>
-        <%= link_to "Oui", accept_animal_reservation_path(reservation.animal, reservation), class: "btn btn-rent m-5 col-2" %>
+      <br>
+      <div class="card-category-infos"/>
+        <div class="form-inline">
+          <!-- <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label> -->
+          <textarea class="" id="exampleFormControlTextarea1" rows="3"></textarea>
+        </div>
+        <div class="form-inline">
+          <% link_to "Conseils d'entretien de l'animal", animal_path(reservation.animal_id, reservation), class: "btn btn-back col-2"  %>
+          <%= link_to "Oui", accept_animal_reservation_path(reservation.animal, reservation), class: "btn btn-rent m-5 col-2" %>
           <%= link_to "Non", decline_animal_reservation_path(reservation.animal, reservation), class: "btn btn-danger m-5 col-2" %>
-
+        </div>
       </div>
+    </div>
     <% end %>
-  </div>
 </div>
-
-
-
-
-
-
 
