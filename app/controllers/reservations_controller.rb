@@ -6,12 +6,15 @@ class ReservationsController < ApplicationController
   end
 
   def accept
-    @animal = Animal.where(user: current_user)
+    @reservation.validated!
+    redirect_to reservations_path
+
     # authorize @reservation
   end
 
   def decline
-    @animal = Animal.where(user: current_user)
+    @reservation.destroy
+    redirect_to reservations_path
 
     # authorize @reservation
   end
