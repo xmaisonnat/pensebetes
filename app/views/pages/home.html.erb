@@ -1,4 +1,4 @@
-<div class="home" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1484557985045-edf25e08da73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80);">
+<div class="home" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url(https://images.unsplash.com/photo-1484557985045-edf25e08da73?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=667&q=80);">
   <div class="container">
     <h1>Pense Bêtes</h1>
     <h2>Un pense-bête pas si bête ! </h2><br><br><br>
@@ -16,12 +16,12 @@
         <%= text_field_tag :query,
           params[:query],
           class: "form-control",
-          placeholder: "Entrez le nom de l'animal"%>
+          placeholder: "Entrez la race de l'animal"%>
       <!--  <% end %> <br> -->
       <%= simple_form_for :search, method: :get do |t| %>
         <%= submit_tag "Voir la liste", class: "btn btn-home mt-4" %>
       <% end %>
    </div>
  </div>
- <br><br>
+ <br><br><br><br><br>
 
