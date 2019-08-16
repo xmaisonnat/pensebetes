@@ -1,5 +1,5 @@
 class ReservationsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show, :create, :accept, :decline]
+  skip_before_action :authenticate_user!, only: [:show, :accept, :decline]
   before_action :set_reservation, only: [:owner_index, :accept, :decline, :destroy]
   def index
     @reservations = Reservation.all.order(created_at: :desc)
