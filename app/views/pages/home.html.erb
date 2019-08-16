@@ -19,9 +19,7 @@
           placeholder: "Entrez le nom de l'animal"%>
       <!--  <% end %> <br> -->
       <%= simple_form_for :search, method: :get do |t| %>
-        <%= t.input :du, as: :string, input_html: {id: "start_date"} %> <br>
-        <%= t.input :au, as: :string, input_html: {id: "end_date"} %> <br>
-        <%= submit_tag "Voir la liste", class: "btn btn-home" %>
+        <%= submit_tag "Voir la liste", class: "btn btn-home mt-4" %>
       <% end %>
    </div>
  </div>

@@ -5,6 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :animals
+  has_many :reservations, dependent: :destroy
 
   validates :name, presence: true
   validates :address, presence: true

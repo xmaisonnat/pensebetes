@@ -14,19 +14,18 @@
                 <div class="form-group">
                     <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label>
                     <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                </div>
-                <ul>
+                </div>              <ul>
                     <li>
                         <% link_to "Conseils d'entretien de l'animal", animal_path(reservation.animal_id), class: "btn btn-flat"  %>
                     </li>
                     <li>
                         <% if policy(reservation).accept? %>
-                        <%= link_to "Accepter", accept_animal_reservation_path(animal_id) %>
+                        <%= link_to "Accepter", accept_animal_reservation_path(reservation.animal, reservation) %>
                         <% end %>
                     </li>
                     <li>
                         <% if policy(reservation).decline? %>
-                        <%= link_to "Refuser", decline_animal_reservation_path(reservation.animal.id) %>
+                        <%= link_to "Refuser", decline_animal_reservation_path(reservation.animal, reservation) %>
                         <% end %>
                     </li>
                 </ul>
