@@ -2,7 +2,7 @@ class AnimalsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :new, :create, :delete]
 
   def index
-    @animals = policy_scope(Animal).order(created_at: :desc)
+    @animals = Animal.all.order(created_at: :desc)
     if params[:query].present?
       sql_query = "race ILIKE :query OR description ILIKE :query"
       @animals = Animal.where(sql_query, query: "%#{params[:query]}%")
@@ -14,7 +14,7 @@ class AnimalsController < ApplicationController
   def show
     @animal = Animal.find(params[:id])
     @reservation = Reservation.new
-    authorize @animal
+    # authorize @animal
 
     @localisations = User.geocoded
     @markers = @localisations.map do |localisation|
@@ -44,7 +44,7 @@ class AnimalsController < ApplicationController
     @animal = Animal.find(params[:id])
     @animal.destroy
     redirect_to animals_path
-    authorize @animal
+    # authorize @animal
   end
 
   private
