@@ -56,7 +56,7 @@
                                 method: :delete,
                                 data: { confirm: "Voulez-vous vraiment tuer?" } %>
               <% end %>
-              <%= t.submit "Retour", class: "btn btn-back " %>
+              <%= link_to "Retour", animals_path, class: "btn btn-back " %>
             <% end %>
         </div>
     </div>

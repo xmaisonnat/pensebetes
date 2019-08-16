@@ -1,32 +1,40 @@
 <div class="animals-index banner" style="background-image: linear-gradient(rgba(0,0,0,0.1),rgba(0,0,0,0.1)), url(https://images.unsplash.com/photo-1422363119751-1d2b703a7546?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1502&q=80);">
-  <div class="container d-flex flex-column align-items-end justify-content-end">
-    <h1>Réservations</h1>
-  </div>
+    <div class="container d-flex flex-column align-items-end justify-content-end">
+        <h1>Réservations</h1>
+    </div>
 </div>
 <br>
 <div class="container">
-  <div class="form-group">
-    <% @reservations.each do |reservation| %>
 
-    <div class="">
-      <div class="card-category2"
-         style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path reservation.animal.photo%>')"/>
-         <h2 class="text-center"> <%= reservation.animal.name %> </h2>
-      </div>
-      <br>
-      <div class="card-category-infos"/>
-        <div class="form-inline">
-          <!-- <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label> -->
-          <textarea class="" id="exampleFormControlTextarea1" rows="3"></textarea>
+  <% @reservations.each do |reservation| %>
+
+    <div class="card-container">
+      <div class="animal-card my-4">
+        <div class="card-category2" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
+         url('<%= cl_image_path reservation.animal.photo%>')">
+        <h2 class="text-center"> <%= link_to "#{reservation.animal.name}", animal_path(reservation.animal) %> </h2>
         </div>
-        <div class="form-inline">
-          <% link_to "Conseils d'entretien de l'animal", animal_path(reservation.animal_id, reservation), class: "btn btn-back col-2"  %>
-          <%= link_to "Oui", accept_animal_reservation_path(reservation.animal, reservation), class: "btn btn-rent m-5 col-2" %>
-          <%= link_to "Non", decline_animal_reservation_path(reservation.animal, reservation), class: "btn btn-danger m-5 col-2" %>
+
+        <br>
+        <div class="card-category-infos"/>
+        <h5><%= reservation.status %></h5>
+          <div class="form-inline">
+            <label for="exampleFormControlTextarea1" spaceholder="Leave a message for the owner about your needs"></label>
+            <textarea class="" id="exampleFormControlTextarea1" rows="3"></textarea>
+          </div>
+          <div class="animal-buttons">
+
+            <% if reservation.pending? %>
+              <%= link_to "Confirmer", accept_animal_reservation_path(reservation.animal, reservation), method: :patch, class: "btn btn-rent my-3" %>
+              <%= link_to "Supprimer", decline_animal_reservation_path(reservation.animal, reservation), method: :patch, class: "btn btn-danger my-3" %>
+              <% elsif reservation.validated?%>
+              <%= link_to "Supprimer", decline_animal_reservation_path(reservation.animal, reservation), method: :patch, class: "btn btn-danger my-3" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </div>
-    <% end %>
+
+  <% end %>
 </div>
 
