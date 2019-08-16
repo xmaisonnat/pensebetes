@@ -1,8 +1,8 @@
 <div class="container">
     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active">
-                <%= cl_image_tag @animal.photo, crop: :fill %>
+            <div class="carousel-item active container-fluid">
+                <%= cl_image_tag @animal.photo, crop: :fit%>
             </div>
             <div class="carousel-item">
                 <img src="https://images.unsplash.com/photo-1462218503178-e822ff881c43?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80" class="d-block w-100" alt="...">
@@ -21,47 +21,42 @@
         </a>
     </div>
     <div class="description rows d-flex mt-4">
-        <div class="colums col-6">
+        <div class="colums col-8">
             <h1>
                 <%= @animal.name %>
             </h1>
             <br>
-            <h5>
+            <h3>
                 <%= @animal.race %>
-            </h5>
+            </h3>
             <br>
             <%= @animal.description %>
         </div>
         <div>
-          <h3>Adresse :</h3>
+          <h3 class="text-secondary">Adresse :</h3>
           <div
             id="map"
-            style="width: 600px;
-            height: 600px;"
+            style="width: 400px;
+            height: 300px;"
             data-markers="<%= @markers.to_json %>"
             data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"
           </div>
         </div>
     </div>
-    <br>
-    <div class="container">
+</div>
+<div class="container">
         <div class="form-wrapper ">
-            <h3>Sélectionne moi</h3>
+            <h3 class="text-secondary">Choisir les dates :</h3>
             <%= simple_form_for [@animal, @reservation] do |t| %>
             <%= t.input :start_date, as: :string, input_html: {id: "start_date"}, label: "Du" %> <br>
             <%= t.input :end_date, as: :string, input_html: {id: "end_date"}, label: "Au" %> <br>
-            <%= t.submit "Retour", class: "btn btn-back" %>
-            <%= t.submit "Bêeee", class: "btn btn-rent" %>
+            <%= t.submit "Bêeee", class: "btn btn-rent mr-5" %>
+              <% if current_user == @animal.user %>
+              <%= link_to "Supprimer", animal_path(@animal), class: "btn btn-danger mr-5",
+                                method: :delete,
+                                data: { confirm: "Voulez-vous vraiment tuer?" } %>
+              <% end %>
+              <%= t.submit "Retour", class: "btn btn-back " %>
             <% end %>
-            <div class="rows">
-                <div class="d-flex justify-content-between">
-                    <% if current_user == @animal.user %>
-                    <%= link_to "Supprimer", animal_path(@animal), class: "btn btn-danger mx-3 mb-5 px-5 py-2",
-                                      method: :delete,
-                                      data: { confirm: "Voulez-vous vraiment tuer?" } %>
-                    <% end %>
-                </div>
-            </div>
         </div>
     </div>
-</div>
