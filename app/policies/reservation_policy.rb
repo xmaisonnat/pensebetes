@@ -24,4 +24,8 @@ class ReservationPolicy < ApplicationPolicy
   def create?
     record.user == user
   end
+
+  def index?
+    record.user == user
+  end
 end

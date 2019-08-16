@@ -24,7 +24,7 @@ class ReservationsController < ApplicationController
     authorize @reservation
 
     if @reservation.save
-      redirect_to reservations_path, notice: "#{@animal.name} a été seléctionné(e)!"
+      redirect_to reservations_path # notice: "#{@animal.name} a été seléctionné(e)!"
     else
       render "animals/show"
     end
@@ -38,6 +38,6 @@ class ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.require(:reservation).permit(:date, :status, :user_id, :animal_id)
+    params.require(:reservation).permit(:date, :status, :user_id, :animal_id, :photo)
   end
 end
