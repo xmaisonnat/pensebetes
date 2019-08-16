@@ -2,8 +2,7 @@ class ReservationsController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show, :create, :accept, :decline]
   before_action :set_reservation, only: [:owner_index, :accept, :decline, :destroy]
   def index
-    @reservations = Reservation.where(user: current_user)
-    @animal
+    @reservations = policy_scope(Reservation).order(created_at: :desc)
   end
 
   def accept
